@@ -1,0 +1,12 @@
+{
+  "name": "queue-setup",
+  "version": "1.0.0",
+  "description": "Setup script for RabbitMQ queues.",
+  "main": "setup.js",
+  "scripts": {
+    "start": "node setup.js"
+  },
+  "dependencies": {
+    "amqplib": "^0.10.8"
+  }
+} 

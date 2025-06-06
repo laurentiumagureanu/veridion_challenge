@@ -1,0 +1,35 @@
+spring:
+  application:
+    name: veridion-api
+  datasource:
+    url: ${DB_URL:jdbc:postgresql://localhost:5432/veridion}
+    username: ${DB_USER:postgres}
+    password: ${DB_PASS:password}
+    driver-class-name: org.postgresql.Driver
+  elasticsearch:
+    uris: ${ELASTIC_SEARCH_URL:http://localhost:9200}
+  jpa:
+    properties:
+      hibernate:
+        jdbc:
+          batch_size: ${DB_HIBERNATE_JDBC_BATCH_SIZE:50}
+        order_updates: true
+        order_inserts: true
+    show-sql: false
+  rabbitmq:
+    host: ${RABBITMQ_HOST:localhost}
+    port: ${RABBITMQ_PORT:5672}
+    username: ${RABBITMQ_USER:guest}
+    password: ${RABBITMQ_PASS:guest}
+    listener:
+      acknowledge-mode: manual
+
+com:
+  veridion:
+    rabbitmq:
+      scrape-exchange: ${RABBITMQ_SCRAPE_EXCHANGE:scrape_exchange}
+      scrape-request-routing-key: ${RABBITMQ_SCRAPE_REQUEST_ROUTING_KEY:request}
+      scrape-result-queue: ${RABBITMQ_SCRAPE_RESULTS_QUEUE:scrape_results}
+    search:
+      index-name: ${ELASTIC_SEARCH_INDEX_NAME:veridion_data}
+      fuzziness-level: ${ELASTIC_SEARCH_FUZZINESS_LEVEL:2}
